@@ -7,58 +7,115 @@
   body {
     margin: 0;
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background-color: #0a1a2f; /* deep navy */
-    color: #f0f4f8;           /* light grayish white */
+    background-color: #0a1a2f; /* navy */
+    color: #e6edf3;            /* light gray for main text */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
 
-  header {
-    background-color: #071320;
+  h2, h1, .panel-title {
+    color: #f8fafc; /* bright text for headers */
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .panel {
+    background-color: #0f213a;
+    border: 1px solid #1e3a5f;
+    border-radius: 8px;
+    padding: 1rem;
+    color: #e6edf3;
+  }
+
+  .panel-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  label {
+    color: #cdd9e5;
+  }
+
+  select, input[type="number"] {
+    background-color: #1b2a45;
+    color: #f0f6fc;
+    border: 1px solid #2e456b;
+    border-radius: 4px;
+    padding: 0.25rem;
+  }
+
+  button {
+    background-color: #2563eb;
     color: #ffffff;
-    padding: 1rem 1.5rem;
-    border-bottom: 2px solid #12345a;
-    text-align: center;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 1.6rem;
-    letter-spacing: 0.5px;
-  }
-
-  .sub {
-    font-size: 0.9rem;
-    color: #b8c2cc;
-  }
-
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  iframe {
     border: none;
-    width: 100%;
-    flex: 1;
-    background-color: #ffffff; /* makes iframe content readable */
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
   }
 
-  footer {
-    background-color: #071320;
-    color: #b8c2cc;
-    text-align: center;
-    padding: 0.75rem;
-    border-top: 2px solid #12345a;
-    font-size: 0.85rem;
+  button:hover {
+    background-color: #1d4ed8;
   }
 
-  a {
-    color: #66b3ff;
+  .npc-box {
+    background-color: #111f35;
+    border: 1px solid #2a4a73;
+    border-radius: 8px;
+    padding: 1rem;
+    color: #f8fafc; /* light text */
+  }
+
+  .npc-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .label {
+    font-weight: bold;
+    color: #9cd4ff; /* accent for labels */
+  }
+
+  .section-title {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #a4cafe;
+    border-bottom: 1px solid #2e456b;
+    padding-bottom: 0.2rem;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    margin: 0.25rem 0 0;
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.4;
+    color: #e6edf3;
+  }
+
+  .small-note {
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+
+  @media (max-width: 800px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
+
 
 </head>
 <body>
