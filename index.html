@@ -2,32 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NPC Generator</title>
+  <title>Random NPC Generator</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #222; color: #eee; text-align: center; }
-    button { margin-top: 1em; padding: 0.5em 1em; font-size: 1.1em; }
-    pre { background: #333; color: #0f0; padding: 1em; text-align: left; width: 80%; margin: 2em auto; border-radius: 6px; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #111827;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      padding: 1rem 1.5rem;
+      background: #0b1120;
+      border-bottom: 1px solid #1f2937;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    .sub {
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      flex: 1;
+    }
+    footer {
+      padding: 0.5rem 1.5rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      background: #020617;
+      border-top: 1px solid #1f2937;
+      text-align: center;
+    }
+    a {
+      color: #38bdf8;
+    }
   </style>
 </head>
 <body>
-  <h1>Random NPC Generator</h1>
-  <button id="generate">Generate NPC</button>
-  <pre id="output">Click "Generate NPC" to begin...</pre>
+  <header>
+    <h1>Random NPC Generator</h1>
+    <div class="sub">
+      Powered by Google Sheets + Apps Script. No login required.
+    </div>
+  </header>
 
-  <script>
-    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycby_mjcO-sGOw3366CFQ2YmMiH2iAysqMGH5ttHzDRq61RYgez0JyfbvCIvOisx8DSyoxw/exec";
+  <main>
+    <!-- 👇 Put your real web app URL here -->
+    <iframe
+      src="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec"
+      title="Random NPC Generator"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </main>
 
-    document.getElementById("generate").addEventListener("click", async () => {
-      const out = document.getElementById("output");
-      out.textContent = "Generating...";
-      try {
-        const res = await fetch(WEBAPP_URL);
-        const npc = await res.json();
-        out.textContent = JSON.stringify(npc, null, 2);
-      } catch (err) {
-        out.textContent = "Error: " + err;
-      }
-    });
-  </script>
+  <footer>
+    If the box above doesn’t load, try opening the generator directly:
+    <a href="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec" target="_blank" rel="noopener">
+      open in a new tab
+    </a>
+  </footer>
 </body>
 </html>
