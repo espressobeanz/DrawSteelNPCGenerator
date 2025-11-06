@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NPC Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #222; color: #eee; text-align: center; }
+    button { margin-top: 1em; padding: 0.5em 1em; font-size: 1.1em; }
+    pre { background: #333; color: #0f0; padding: 1em; text-align: left; width: 80%; margin: 2em auto; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Random NPC Generator</h1>
+  <button id="generate">Generate NPC</button>
+  <pre id="output">Click "Generate NPC" to begin...</pre>
+
+  <script>
+    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycby_mjcO-sGOw3366CFQ2YmMiH2iAysqMGH5ttHzDRq61RYgez0JyfbvCIvOisx8DSyoxw/exec";
+
+    document.getElementById("generate").addEventListener("click", async () => {
+      const out = document.getElementById("output");
+      out.textContent = "Generating...";
+      try {
+        const res = await fetch(WEBAPP_URL);
+        const npc = await res.json();
+        out.textContent = JSON.stringify(npc, null, 2);
+      } catch (err) {
+        out.textContent = "Error: " + err;
+      }
+    });
+  </script>
+</body>
+</html>
