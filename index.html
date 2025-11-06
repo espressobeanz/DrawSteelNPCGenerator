@@ -3,153 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <title>Random NPC Generator</title>
- <style>
-  body {
-    margin: 0;
-    font-family: "IM Fell English", "Georgia", serif;
-    background: #f2e9d0; /* parchment base */
-    color: #2c2415; /* dark ink */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
 
-  h1, h2, .panel-title {
-    font-family: "Cinzel Decorative", "Georgia", serif;
-    color: #3b2a1a;
-  }
+  <!-- Optional fonts to match the parchment style inside the iframe -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English&display=swap" rel="stylesheet">
 
-  h2 {
-    margin-top: 0.5rem;
-  }
-
-  .layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
-    gap: 1.25rem;
-    align-items: flex-start;
-  }
-
-  .panel {
-    background: #f9f2dd;
-    border: 2px solid #bda77e;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-    padding: 1rem 1.25rem;
-  }
-
-  .panel-title {
-    font-weight: bold;
-    margin-bottom: 0.75rem;
-    font-size: 1.15rem;
-    border-bottom: 1px solid #d2c2a6;
-    padding-bottom: 0.25rem;
-  }
-
-  label {
-    font-weight: bold;
-    color: #3b2a1a;
-    margin-bottom: 0.2rem;
-  }
-
-  select,
-  input[type="number"] {
-    background-color: #fffdf6;
-    border: 1px solid #c9b58c;
-    color: #2c2415;
-    border-radius: 4px;
-    padding: 0.35rem;
-    font-family: inherit;
-  }
-
-  button {
-    background: linear-gradient(#7a5e3c, #5a4229);
-    color: #f8f2e4;
-    border: 1px solid #3e2c18;
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    font-family: "Cinzel", "Georgia", serif;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  button:hover {
-    background: linear-gradient(#8c7048, #6c5334);
-    transform: translateY(-1px);
-  }
-
-  .npc-box {
-    background: #fdf8e2;
-    border: 2px solid #bda77e;
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.08);
-    color: #2c2415;
-  }
-
-  .npc-box-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.75rem;
-  }
-
-  .label {
-    font-weight: bold;
-    color: #5c3a21;
-  }
-
-  .section-title {
-    margin-top: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    color: #5e472b;
-    border-bottom: 1px solid #c9b58c;
-    padding-bottom: 0.2rem;
-  }
-
-  pre {
-    white-space: pre-wrap;
-    margin: 0.25rem 0 0;
-    font-family: "IM Fell English", serif;
-    line-height: 1.4;
-    color: #2c2415;
-  }
-
-  .small-note {
-    font-size: 0.75rem;
-    color: #6b604e;
-    margin-top: 0.25rem;
-  }
-
-  hr {
-    border: 0;
-    border-top: 1px dashed #d8c49a;
-    margin: 0.75rem 0;
-  }
-
-  @media (max-width: 800px) {
-    .layout {
-      grid-template-columns: 1fr;
+  <style>
+    body {
+      margin: 0;
+      font-family: "IM Fell English", "Georgia", serif;
+      background: #f2e9d0; /* parchment base */
+      color: #2c2415;      /* dark ink */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-  }
 
-  /* Optional: subtle parchment texture background */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                      radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.3;
-    pointer-events: none;
-  }
-</style>
+    header {
+      background: #f7f0de;
+      border-bottom: 2px solid #bda77e;
+      padding: 0.75rem 1.5rem 0.4rem;
+    }
 
+    h1 {
+      margin: 0;
+      font-family: "Cinzel Decorative", "Georgia", serif;
+      font-size: 1.7rem;
+      color: #3b2a1a;
+    }
 
+    .sub {
+      font-size: 0.9rem;
+      color: #6b604e;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0.75rem 1.5rem 1rem;
+    }
+
+    iframe {
+      border: 2px solid #bda77e;
+      border-radius: 8px;
+      background: #fdf8e2;
+      width: 100%;
+      flex: 1;
+      min-height: 720px;   /* 👈 makes the generator big instead of tiny */
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    footer {
+      background: #f7f0de;
+      border-top: 1px solid #d2c2a6;
+      padding: 0.5rem 1.5rem 0.75rem;
+      font-size: 0.85rem;
+      color: #6b604e;
+    }
+
+    a {
+      color: #5c3a21;
+    }
+
+    /* Subtle parchment texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    @media (max-width: 800px) {
+      header, footer {
+        padding: 0.5rem 0.75rem;
+      }
+      main {
+        padding: 0.5rem 0.75rem 0.75rem;
+      }
+      iframe {
+        min-height: 800px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -160,7 +100,7 @@
   </header>
 
   <main>
-    <!-- 👇 Put your real web app URL here -->
+    <!-- 👇 Your real Apps Script web app URL -->
     <iframe
       src="https://script.google.com/macros/s/AKfycby_mjcO-sGOw3366CFQ2YmMiH2iAysqMGH5ttHzDRq61RYgez0JyfbvCIvOisx8DSyoxw/exec"
       title="Random NPC Generator"
@@ -171,7 +111,8 @@
 
   <footer>
     If the box above doesn’t load, try opening the generator directly:
-    <a href="https://script.google.com/macros/s/AKfycby_mjcO-sGOw3366CFQ2YmMiH2iAysqMGH5ttHzDRq61RYgez0JyfbvCIvOisx8DSyoxw/exec" target="_blank" rel="noopener">
+    <a href="https://script.google.com/macros/s/AKfycby_mjcO-sGOw3366CFQ2YmMiH2iAysqMGH5ttHzDRq61RYgez0JyfbvCIvOisx8DSyoxw/exec"
+       target="_blank" rel="noopener">
       open in a new tab
     </a>
   </footer>
